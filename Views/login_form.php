@@ -1,3 +1,7 @@
+<?php 
+session_start();
+session_destroy();
+?>
 <?php if(!isset($_SESSION['id'])): ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -17,6 +21,4 @@
         <a href="register_form.php">Cadastrar</a>
     </body>
     </html>
-<?php else: ?>
-    <?php session_destroy(); ?>
 <?php endif ?>
