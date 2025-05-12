@@ -1,16 +1,45 @@
-<?php
-session_start();
-if (isset($_SESSION['id'])) {
-    if ($_SESSION['admin'] == true) {
-        echo "Olá, Admin!\n";
-        echo "<a href='usuarios.php'>Usuários</a>";
-    } else {
-        echo "Olá, Usuário!";
-    }
-} else {
-    header('Location: login_form.php');
-    exit();
-}
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/style.css">
+    <title>Home Page</title>
+</head>
+<body>
+    <?php
+    session_start();
 
-<a href="login_form.php">Login</a>
+    if (isset($_SESSION['id'])) {
+        if ($_SESSION['admin'] == true): ?>
+        <div class="nav-bar">
+            <div class="nav-bar-content">
+                <a href='usuarios.php'>Usuários</a>
+                <a href="login_form.php">Login</a>
+            </div>
+        </div>
+        <div class="container">
+            <h1>Olá, Admin!</h1>
+            <p>Você tem acesso a todas as funcionalidades do sistema.</p>
+        </div>
+        <?php else: ?>
+            <div class="nav-bar">
+                <div class="nav-bar-content">
+                    <a href="login_form.php">Login</a>
+                </div>
+            </div>
+            <div class="container">
+            <h1>Olá, Usuário!</h1>
+                <div class="video">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/i97OkCXwotE?si=l-gZcCw12C17OMJO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        <?php endif; ?>
+    <?php
+    } else {
+        header('Location: login_form.php');
+        exit();
+    }
+    ?>
+</body>
+</html>

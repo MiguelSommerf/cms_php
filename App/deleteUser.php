@@ -2,7 +2,7 @@
 require_once '../config/connect.php';
 
 session_start();
-if (!isset($_SESSION['admin'])) {
+if (!isset($_SESSION['admin']) or $_SESSION['admin'] != true) {
     header('Location: ../Views/home.php');
     exit('Você não tem permissão para acessar esta página.');
 } else {
