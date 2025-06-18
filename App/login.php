@@ -20,7 +20,9 @@ if (!empty($username) && !empty($senha)) {
         $_SESSION['id'] = true;
         
         if ($result['is_admin'] == 1) {
-            $_SESSION['admin'] = true;
+            $_SESSION['admin'] = 1;
+        } else if ($result['is_admin'] == 2) {
+            $_SESSION['admin'] = 2;
         } else {
             $_SESSION['admin'] = false;
         }

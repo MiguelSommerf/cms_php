@@ -19,6 +19,16 @@ if (!isset($_SESSION['admin']) or $_SESSION['admin'] != true) {
             const confirmacao = confirm('Você tem certeza que deseja deletar este usuário?');
             return confirmacao;
         }
+
+        function adminFunction() {
+            const confirmacao = confirm('Você tem certeza que deseja tornar este usuário administrador?');
+            return confirmacao;
+        }
+
+        function standardFunction() {
+            const confirmacao = confirm('Você tem certeza que deseja tornar este administrador um usuário padrão?');
+            return confirmacao;
+        }
     </script>
     <title>Usuários</title>
 </head>
@@ -29,6 +39,7 @@ if (!isset($_SESSION['admin']) or $_SESSION['admin'] != true) {
         </div>
     </div>
     <div class="container">
+        <p>Usuários Comuns</p>
         <?php
         $query = "SELECT * FROM usuarios WHERE is_admin = 0";
         $stmt = $conn->prepare($query);
@@ -42,6 +53,37 @@ if (!isset($_SESSION['admin']) or $_SESSION['admin'] != true) {
             foreach ($result as $usuario) {
                 echo "<tr><td>" . $usuario['nome_usuario'] . "</td>";
                 echo "<td>
+                        <form class='ocult' action='../App/' method='POST'>
+                            <input type='hidden' name='id_usuario' value='" . $usuario['id_usuario'] . "'>
+                            <button class='btn-admin' type='submit' onclick='return adminFunction()'>Tornar Admin</button>
+                        </form>
+                        <form class='ocult' action='../App/deleteUser.php' method='POST'>
+                            <input type='hidden' name='id_usuario' value='" . $usuario['id_usuario'] . "'>
+                            <button class='btn-delete' type='submit' onclick='return deleteFunction()'>Deletar</button>
+                        </form>
+                    </td></tr>";
+            }
+            echo "</table>";
+        }
+        ?>
+        <p>Usuários Admin's</p>
+        <?php
+        $query = "SELECT * FROM usuarios WHERE is_admin = 1";
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            echo "<table>";
+            echo "<tr><th>Username</th>";
+            echo "<th>Deletar</th></tr>";
+            foreach ($result as $usuario) {
+                echo "<tr><td>" . $usuario['nome_usuario'] . "</td>";
+                echo "<td>
+                        <form class='ocult' action='../App/' method='POST'>
+                            <input type='hidden' name='id_usuario' value='" . $usuario['id_usuario'] . "'>
+                            <button class='btn-admin' type='submit' onclick='return standardFunction()'>Tornar Padrão</button>
+                        </form>
                         <form class='ocult' action='../App/deleteUser.php' method='POST'>
                             <input type='hidden' name='id_usuario' value='" . $usuario['id_usuario'] . "'>
                             <button class='btn-delete' type='submit' onclick='return deleteFunction()'>Deletar</button>

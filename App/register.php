@@ -20,7 +20,7 @@ if (!empty($username) && !empty($senha)) {
         $stmt->bind_param("s", $username);
         $stmt->execute();
 
-        $_SESSION['admin'] = true;
+        $_SESSION['admin'] = 1;
     } else {
         $query = "UPDATE usuarios SET is_admin = 0 WHERE nome_usuario = ?";
         $stmt = $conn->prepare($query);

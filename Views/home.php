@@ -11,17 +11,27 @@
     session_start();
 
     if (isset($_SESSION['id'])) {
-        if ($_SESSION['admin'] == true): ?>
+        if ($_SESSION['admin'] == 1): ?>
         <div class="nav-bar">
             <div class="nav-bar-content">
-                <a href='usuarios.php'>Usuários</a>
                 <a href="login_form.php">Login</a>
             </div>
         </div>
         <div class="container">
             <h1>Olá, Admin!</h1>
-            <p>Você tem acesso a todas as funcionalidades do sistema.</p>
+            <p>Você tem acesso moderado ao sistema.</p>
         </div>
+        <?php elseif ($_SESSION['admin'] == 2): ?>
+            <div class="nav-bar">
+            <div class="nav-bar-content">
+                <a href='usuarios.php'>Usuários</a>
+                <a href="login_form.php">Login</a>
+            </div>
+            </div>
+            <div class="container">
+                <h1>Olá, Admin avançado!</h1>
+                <p>Você tem acesso a todas as funcionalidades do sistema.</p>
+            </div>
         <?php else: ?>
             <div class="nav-bar">
                 <div class="nav-bar-content">
