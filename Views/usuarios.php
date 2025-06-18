@@ -49,10 +49,11 @@ if (!isset($_SESSION['admin']) or $_SESSION['admin'] != true) {
         if ($result->num_rows > 0) {
             echo "<table>";
             echo "<tr><th>Username</th>";
-            echo "<th>Deletar</th></tr>";
+            echo "<th>Opções</th></tr>";
             foreach ($result as $usuario) {
                 echo "<tr><td>" . $usuario['nome_usuario'] . "</td>";
                 echo "<td>
+                    <div class='button-group'>
                         <form class='ocult' action='../App/admin.php' method='POST'>
                             <input type='hidden' name='id_usuario' value='" . $usuario['id_usuario'] . "'>
                             <button class='btn-admin' type='submit' onclick='return adminFunction()'>Tornar Admin</button>
@@ -61,7 +62,8 @@ if (!isset($_SESSION['admin']) or $_SESSION['admin'] != true) {
                             <input type='hidden' name='id_usuario' value='" . $usuario['id_usuario'] . "'>
                             <button class='btn-delete' type='submit' onclick='return deleteFunction()'>Deletar</button>
                         </form>
-                    </td></tr>";
+                    </div>
+                </td></tr>";
             }
             echo "</table>";
         }
@@ -76,18 +78,20 @@ if (!isset($_SESSION['admin']) or $_SESSION['admin'] != true) {
         if ($result->num_rows > 0) {
             echo "<table>";
             echo "<tr><th>Username</th>";
-            echo "<th>Deletar</th></tr>";
+            echo "<th>Opções</th></tr>";
             foreach ($result as $usuario) {
                 echo "<tr><td>" . $usuario['nome_usuario'] . "</td>";
                 echo "<td>
-                        <form class='ocult' action='../App/admin.php' method='POST'>
-                            <input type='hidden' name='id_usuario' value='" . $usuario['id_usuario'] . "'>
-                            <button class='btn-admin' type='submit' onclick='return standardFunction()'>Tornar Padrão</button>
-                        </form>
-                        <form class='ocult' action='../App/deleteUser.php' method='POST'>
-                            <input type='hidden' name='id_usuario' value='" . $usuario['id_usuario'] . "'>
-                            <button class='btn-delete' type='submit' onclick='return deleteFunction()'>Deletar</button>
-                        </form>
+                        <div class='button-group'>
+                            <form class='ocult' action='../App/admin.php' method='POST'>
+                                <input type='hidden' name='id_usuario' value='" . $usuario['id_usuario'] . "'>
+                                <button class='btn-admin' type='submit' onclick='return standardFunction()'>Tornar Padrão</button>
+                            </form>
+                            <form class='ocult' action='../App/deleteUser.php' method='POST'>
+                                <input type='hidden' name='id_usuario' value='" . $usuario['id_usuario'] . "'>
+                                <button class='btn-delete' type='submit' onclick='return deleteFunction()'>Deletar</button>
+                            </form>
+                        </div>
                     </td></tr>";
             }
             echo "</table>";

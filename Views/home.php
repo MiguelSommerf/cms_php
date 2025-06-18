@@ -14,7 +14,7 @@
         if ($_SESSION['admin'] == 1): ?>
         <div class="nav-bar">
             <div class="nav-bar-content">
-                <a href="login_form.php">Login</a>
+                <a href="login_form.php">Deslogar</a>
             </div>
         </div>
         <div class="container">
@@ -23,10 +23,11 @@
         </div>
         <?php elseif ($_SESSION['admin'] == 2): ?>
             <div class="nav-bar">
-            <div class="nav-bar-content">
-                <a href='usuarios.php'>Usuários</a>
-                <a href="login_form.php">Login</a>
-            </div>
+                <div class="nav-bar-content">
+                    <a href="projetos.php">Projetos</a>
+                    <a href="usuarios.php">Usuários</a>
+                    <a href="login_form.php">Deslogar</a>
+                </div>
             </div>
             <div class="container">
                 <h1>Olá, Admin avançado!</h1>
