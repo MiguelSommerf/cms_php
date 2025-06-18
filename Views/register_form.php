@@ -23,7 +23,7 @@ session_destroy();
             <label>Senha:</label>
             <input type="password" name="senha" placeholder="Digite aqui" required>
             <select name="admin" required>
-                <option disabled selected>É Admin?</option>
+                <option value="" disabled selected>É Admin?</option>
                 <option value="<?php echo true; ?>">Sim</option>
                 <option value="<?php echo false; ?>">Não</option>
             </select>
