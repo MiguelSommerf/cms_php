@@ -14,6 +14,7 @@
         if ($_SESSION['admin'] == 1): ?>
         <div class="nav-bar">
             <div class="nav-bar-content">
+                <a href="projetos.php">Projetos</a>
                 <a href="login_form.php">Deslogar</a>
             </div>
         </div>
