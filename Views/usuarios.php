@@ -53,7 +53,7 @@ if (!isset($_SESSION['admin']) or $_SESSION['admin'] != true) {
             foreach ($result as $usuario) {
                 echo "<tr><td>" . $usuario['nome_usuario'] . "</td>";
                 echo "<td>
-                        <form class='ocult' action='../App/' method='POST'>
+                        <form class='ocult' action='../App/admin.php' method='POST'>
                             <input type='hidden' name='id_usuario' value='" . $usuario['id_usuario'] . "'>
                             <button class='btn-admin' type='submit' onclick='return adminFunction()'>Tornar Admin</button>
                         </form>
@@ -80,7 +80,7 @@ if (!isset($_SESSION['admin']) or $_SESSION['admin'] != true) {
             foreach ($result as $usuario) {
                 echo "<tr><td>" . $usuario['nome_usuario'] . "</td>";
                 echo "<td>
-                        <form class='ocult' action='../App/' method='POST'>
+                        <form class='ocult' action='../App/admin.php' method='POST'>
                             <input type='hidden' name='id_usuario' value='" . $usuario['id_usuario'] . "'>
                             <button class='btn-admin' type='submit' onclick='return standardFunction()'>Tornar Padrão</button>
                         </form>
