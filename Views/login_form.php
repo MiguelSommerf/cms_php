@@ -17,6 +17,7 @@ session_destroy();
         </div>
     </div>
     <div class="container">
+        <h1>Login</h1>
         <form class="form-group" action="../App/login.php" method="post">
             <label>Nome de usuário:</label>
             <input type="text" name="username" placeholder="Digite aqui" required>

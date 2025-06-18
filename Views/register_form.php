@@ -17,16 +17,12 @@ session_destroy();
         </div>
     </div>
     <div class="container">
+        <h1>Cadastro</h1>
         <form class="form-group" action="../App/register.php" method="post">
             <label>Nome de usuário:</label>
             <input type="text" name="username" placeholder="Digite aqui" required>
             <label>Senha:</label>
             <input type="password" name="senha" placeholder="Digite aqui" required>
-            <select name="admin" required>
-                <option value="" disabled selected>É Admin?</option>
-                <option value="<?php echo true; ?>">Sim</option>
-                <option value="<?php echo false; ?>">Não</option>
-            </select>
             <button type="submit">Entrar</button>
         </form>
     </div>
